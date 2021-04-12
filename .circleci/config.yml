@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   python: circleci/python@0.2.1
+  twilio: circleci/twilio@1.0.0
 
 jobs:
   build:
@@ -11,16 +12,27 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run: python3 ipl21.py 
+  alert:
+      docker:
+        - image: 'cimg/node:14.4.0'
+      steps:
+        - twilio/install
+        - twilio/alert:
+            body: Customize alert message for this job
+            from: 'whatsapp:+14155238886'
+            to: 'whatsapp:+919133416306'
+  #twililo: circleci/twilio@volatile
+
 
 workflows:
   nightly:
-    triggers:
-      - schedule:
-          cron: "30 20 * * *"
-          filters:
-            branches:
-              only:
-                - master
+    # triggers:
+    #   - schedule:
+    #       cron: "30 20 * * *"
+    #       filters:
+    #         branches:
+    #           only:
+    #             - master
 
     jobs:
       - build

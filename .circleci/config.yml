@@ -15,12 +15,16 @@ jobs:
   alert:
       docker:
         - image: 'cimg/node:14.4.0'
+      environment: 
+        - TWILIO_AUTH_TOKEN: '3f3d1d86af4885996bc4f7144df24e02'
       steps:
         - twilio/install
         - twilio/alert:
             body: Customize alert message for this job
             from: 'whatsapp:+14155238886'
             to: 'whatsapp:+919133416306'
+            authtoken: TWILIO_AUTH_TOKEN
+            sid: 'ACd03277db40dc83c312e147c637864b2a'
   #twililo: circleci/twilio@volatile
 
 

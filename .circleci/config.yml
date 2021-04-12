@@ -18,11 +18,10 @@ workflows:
    nightly:
      triggers:
        - schedule:
-           cron: "35 3 * * *"
+           cron: "39 3 * * *"
            filters:
              branches:
                only:
-                 - master
-                 - beta
+                 - circle-ci
      jobs:
        - build

@@ -12,6 +12,8 @@ import json
 uid_data = {"Mohith":["742873","0",3,100],"Chandan":["783789","0",5,200], "Chakri":["668570","0",4,0], "Chengal":["212290","0",7,0],"Sankeerth": ["224755","0",9,0],
             "Kaushik":["684745","0", 6,0],"Nagi":["738875","0",8,0]}
 
+balancefor7 = [132,60,8,-50, -50, -50 , -50]
+
 def scoreUpdate():
     si = scoreInterface()
     si.get_latest_tourni_score(uid_data)
@@ -24,16 +26,12 @@ def scoreUpdate():
 
 def playerMoneyUpdate(moneySheet,match_rankin,colToUpdate):
         keys =list(match_rankin.keys())
-        moneySheet.update_cell(match_rankin[keys[0]][2],colToUpdate,132)
-        moneySheet.update_cell(match_rankin[keys[1]][2],colToUpdate,60)
-        moneySheet.update_cell(match_rankin[keys[2]][2],colToUpdate,8)
-        moneySheet.update_cell(match_rankin[keys[3]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[4]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[5]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[6]][2],colToUpdate,-50)
+        for i in range(0,len(keys)):
+            moneySheet.update_cell(match_rankin[keys[i]][2],colToUpdate,balancefor7[i])
 
 def moneyUpdate():
     moneySheet = gsheets().getBalanceSheet()
+    #same dict but sorted
     match_rankin=dict(sorted(uid_data.items(),key= lambda x:-x[1][3]))
     colToUpdate = gsheets().getColtoUpdate(moneySheet,3) 
     playerMoneyUpdate(moneySheet,match_rankin,colToUpdate)

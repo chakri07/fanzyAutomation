@@ -1,5 +1,4 @@
 version: 2.1
-
 orbs:
   python: circleci/python@0.2.1
 
@@ -11,11 +10,18 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - run:
-          command: ./ipl21.py test
-          name: Test
+      - run: python ipl21.py 
 
 workflows:
-  main:
+  nightly:
+    triggers:
+      - schedule:
+          cron: "30 18 * * *"
+          filters:
+            branches:
+              only:
+                - circle-ci
+                - master
+
     jobs:
       - build

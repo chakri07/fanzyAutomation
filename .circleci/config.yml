@@ -10,18 +10,17 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - run: python ipl21.py 
+      - run: python3 ipl21.py 
 
 workflows:
   nightly:
-    triggers:
-      - schedule:
-          cron: "30 20 * * *"
-          filters:
-            branches:
-              only:
-                - circle-ci
-                - master
+    # triggers:
+    #   - schedule:
+    #       cron: "30 20 * * *"
+    #       filters:
+    #         branches:
+    #           only:
+    #             - master
 
     jobs:
       - build

@@ -35,5 +35,5 @@ workflows:
     #             - master
 
     jobs:
-      - build
+      #- build
       - alert

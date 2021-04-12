@@ -13,13 +13,15 @@ jobs:
       - run: python ipl21.py 
 
 workflows:
-   nightly:
-     triggers:
-       - schedule:
-           cron: "44 3 * * *"
-           filters:
-             branches:
-               only:
-                 - circle-ci
-     jobs:
-       - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "50 15 * * *"
+          filters:
+            branches:
+              only:
+                - circle-ci
+                - master
+
+    jobs:
+      - build

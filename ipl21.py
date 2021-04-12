@@ -12,6 +12,15 @@ import json
 uid_data = {"Mohith":["742873","0",3,100],"Chandan":["783789","0",5,200], "Chakri":["668570","0",4,0], "Chengal":["212290","0",7,0],"Sankeerth": ["224755","0",9,0],
             "Kaushik":["684745","0", 6,0],"Nagi":["738875","0",8,0]}
 
+balancefor7 = [132,60,8,-50, -50, -50 , -50]
+balancefor6= [116,44,0,-50, -50, -50]
+dailyLeaderBoardCell = [16,4]
+
+def dailyRanking():
+    match_rankin=dict(sorted(uid_data.items(),key= lambda x:-x[1][3]))
+    return match_rankin
+
+
 def scoreUpdate():
     si = scoreInterface()
     si.get_latest_tourni_score(uid_data)
@@ -24,24 +33,27 @@ def scoreUpdate():
 
 def playerMoneyUpdate(moneySheet,match_rankin,colToUpdate):
         keys =list(match_rankin.keys())
-        moneySheet.update_cell(match_rankin[keys[0]][2],colToUpdate,132)
-        moneySheet.update_cell(match_rankin[keys[1]][2],colToUpdate,60)
-        moneySheet.update_cell(match_rankin[keys[2]][2],colToUpdate,8)
-        moneySheet.update_cell(match_rankin[keys[3]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[4]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[5]][2],colToUpdate,-50)
-        moneySheet.update_cell(match_rankin[keys[6]][2],colToUpdate,-50)
+        for i in range(0,len(keys)):
+            moneySheet.update_cell(match_rankin[keys[i]][2],colToUpdate,balancefor7[i])
 
 def moneyUpdate():
     moneySheet = gsheets().getBalanceSheet()
-    match_rankin=dict(sorted(uid_data.items(),key= lambda x:-x[1][3]))
+    #same dict but sorted
+    match_rankin=dailyRanking()
     colToUpdate = gsheets().getColtoUpdate(moneySheet,3) 
     playerMoneyUpdate(moneySheet,match_rankin,colToUpdate)
     return
 
+def leaderBoardUpdate():
+    scoreSheet = gsheets().getscoreSheet()
+    for key in dailyRanking():
+        scoreSheet.update_cell(dailyLeaderBoardCell[0],dailyLeaderBoardCell[1],key)
+        dailyLeaderBoardCell[0] = dailyLeaderBoardCell[0] + 1
+
 def main():
     scoreUpdate()
     moneyUpdate()
+    leaderBoardUpdate()
     return
    
 if __name__ == "__main__":

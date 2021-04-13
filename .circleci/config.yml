@@ -15,7 +15,7 @@ jobs:
       - run: python3 ipl21.py 
       - twilio/install
       - twilio/sendsms:
-          body: Hi Alwala, fanzy sheet updated
+          body: Hi Alwala, fanzy sheet updated check 1
           from: '+15752152911'
           to: '+919133416306'
 
@@ -23,11 +23,20 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "30 20 * * *"
+          cron: "16 14 * * *"
           filters:
             branches:
               only:
                 - master
-
+    jobs:
+      - fanzy_job_with_sms
+  sat_and_sun:
+    triggers:
+      - schedule:
+          cron: "14 14 * * 2,0"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - fanzy_job_with_sms

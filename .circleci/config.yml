@@ -39,11 +39,20 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "30 20 * * *"
+          cron: "30 02 * * *"
           filters:
             branches:
               only:
                 - master
-
+    jobs:
+      - fanzy_job_with_sms
+  sat_and_sun:
+    triggers:
+      - schedule:
+          cron: "30 21 * * 6,0"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - fanzy_job_with_sms

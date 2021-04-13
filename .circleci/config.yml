@@ -25,13 +25,13 @@ jobs:
 
 workflows:
   nightly:
-    # triggers:
-    #   - schedule:
-    #       cron: "30 20 * * *"
-    #       filters:
-    #         branches:
-    #           only:
-    #             - master
+    triggers:
+      - schedule:
+          cron: "30 20 * * *"
+          filters:
+            branches:
+              only:
+                - master
 
     jobs:
       - fanzy_job_with_sms

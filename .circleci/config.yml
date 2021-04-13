@@ -19,7 +19,7 @@ jobs:
     steps:
       - twilio/install
       - twilio/sendsms:
-          body: This is a custom message notification
+          body: Hi bro
           #from: '+15005550006'
           #to: '+15005550006'
 

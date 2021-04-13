@@ -21,7 +21,7 @@ jobs:
       - twilio/sendsms:
           body: Hi bro
           #from: '+15005550006'
-          #to: '+15005550006'
+          to: '+919133416306'
 
 workflows:
   nightly:

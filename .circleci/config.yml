@@ -27,9 +27,9 @@ jobs:
       #    from: '+15752152911'
       #    to: '+919492322223'
       - twilio/sendsms:
-          body: Mohith lavde, fanzy scores and money sheet update ayyai chudu badcow 
+          body: Arey, fanzy sheet update ayyindi chudu
           from: '+15752152911'
-          to: '+919515345763'
+          to: '+917095237775'
       
 
 workflows:

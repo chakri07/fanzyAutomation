@@ -19,13 +19,13 @@ jobs:
     steps:
       - twilio/install
       - twilio/sendsms:
-          body: Hi from whatsapp
-          from: '+15752152911'
-          to: '+919133416306'
-      - twilio/sendsms:
-          body: Hi ra Chakri, from Alwala
+          body: Hi ra Chakri, from Alwala, message 2
           from: '+15752152911'
           to: '+919550593328'
+      - twilio/sendsms:
+          body: Hi from Alwala
+          from: '+15752152911'
+          to: '+919133416306'
 
 workflows:
   nightly:

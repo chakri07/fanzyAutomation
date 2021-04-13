@@ -23,20 +23,20 @@ workflows:
   every_night:
     triggers:
       - schedule:
-          cron: "31 09 * * *"
+          cron: "30 20 * * *"
           filters:
             branches:
               only:
-                - test
+                - master
     jobs:
       - fanzy_job_with_sms
   sat_and_sun:
     triggers:
       - schedule:
-          cron: "29 09 * * 2,0"
+          cron: "00 16 * * 6,0"
           filters:
             branches:
               only:
-                - test
+                - master
     jobs:
       - fanzy_job_with_sms

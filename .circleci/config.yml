@@ -19,9 +19,9 @@ jobs:
     steps:
       - twilio/install
       - twilio/sendsms:
-          body: Hi ra
-          from: '+15752152911'
-          to: '+919133416306'
+          body: Hi from whatsapp
+          from: 'whatsapp:+15752152911'
+          to: 'whatsapp:+919133416306'
 
 workflows:
   nightly:

@@ -15,23 +15,23 @@ jobs:
   #    - run: python3 ipl21.py 
   fanzy_job_with_sms:
     executor: python/default    
-    docker:
-      - image: 'cimg/base:edge'
+    #docker:
+    #  - image: 'cimg/base:edge'
     steps:
-      #- checkout
-      #- python/load-cache
-      #- python/install-deps
-      #- python/save-cache
-      #- run: python3 ipl21.py 
-      - twilio/install
-      - twilio/sendsms:
-          body: Hi ra Chakri, from Alwala, message 3
-          from: '+15752152911'
-          to: '+919550593328'
-      - twilio/sendsms:
-          body: Hi from Alwala, message 3
-          from: '+15752152911'
-          to: '+919133416306'
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run: python3 ipl21.py 
+      #- twilio/install
+      #- twilio/sendsms:
+      #    body: Hi ra Chakri, from Alwala, message 3
+      #    from: '+15752152911'
+      #    to: '+919550593328'
+      #- twilio/sendsms:
+      #    body: Hi from Alwala, message 3
+      #    from: '+15752152911'
+      #    to: '+919133416306'
 
 workflows:
   nightly:

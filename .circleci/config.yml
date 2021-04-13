@@ -38,5 +38,5 @@ workflows:
     #             - master
 
     jobs:
-      #- build
-      - sms_job
+      - build
+      #- sms_job

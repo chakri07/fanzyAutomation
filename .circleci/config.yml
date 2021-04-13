@@ -15,8 +15,7 @@ jobs:
       - run: python3 ipl21.py 
       - twilio/install
       - twilio/sendsms:
-          #body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
-          body: Hello ra Chakri, from Alwala
+          body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
           from: '+15752152911'
           to: '+919550593328'
       - twilio/sendsms:

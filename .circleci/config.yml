@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@0.2.1
   twilio: circleci/twilio@1.0.0
+  node: circleci/node@3.0.0
 
 jobs:
   build:
@@ -13,20 +14,11 @@ jobs:
       - python/save-cache
       - run: python3 ipl21.py 
   alert:
-      docker:
-        - image: 'cimg/node:14.4.0'
-      #environment: 
-      #  - TWILIO_AUTH_TOKEN: '3f3d1d86af4885996bc4f7144df24e02'
+      executor:
+        name: node/default
       steps:
-        - twilio/install
-        - twilio/alert:
-            body: Customize alert message for this job
-            from: 'whatsapp:+14155238886'
-            to: 'whatsapp:+919133416306'
-            #authtoken: TWILIO_AUTH_TOKEN
-            #sid: 'ACd03277db40dc83c312e147c637864b2a'
-  #twililo: circleci/twilio@volatile
-
+        - twilio/sendsms:
+            body: Customized alert message for this job
 
 workflows:
   nightly:

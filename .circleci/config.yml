@@ -14,14 +14,18 @@ jobs:
       - python/save-cache
       - run: python3 ipl21.py 
       - twilio/install
-      - twilio/sendsms:
-          body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
-          from: '+15752152911'
-          to: '+919550593328'
+      #- twilio/sendsms:
+      #    body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
+      #    from: '+15752152911'
+      #    to: '+919550593328'
       - twilio/sendsms:
           body: Hello test
           from: '+15752152911'
           to: '+919133416306'
+      - twilio/sendsms:
+          body: Hello Cowsick, fanzy scores and money sheet update ayyai chudu ra lavde
+          from: '+15752152911'
+          to: '+919492322223'
       
 
 workflows:

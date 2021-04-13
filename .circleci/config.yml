@@ -17,7 +17,7 @@ jobs:
       - twilio/sendsms:
           body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
           from: '+15752152911'
-          to: '+919550593328'
+          to: '+916303698253'
       - twilio/sendsms:
           body: Hello
           from: '+15752152911'

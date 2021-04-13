@@ -23,7 +23,7 @@ workflows:
   every_night:
     triggers:
       - schedule:
-          cron: "49 14 * * *"
+          cron: "24 09 * * *"
           filters:
             branches:
               only:

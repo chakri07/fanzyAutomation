@@ -4,6 +4,8 @@ from sheet import gsheets
 import requests
 import json
 import time
+import pytz
+IST = pytz.timezone('Asia/Kolkata')
 
 #0 = uid
 #1 = latest tourni score

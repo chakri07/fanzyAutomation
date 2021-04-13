@@ -22,10 +22,14 @@ jobs:
           body: Hello test
           from: '+15752152911'
           to: '+919133416306'
+      #- twilio/sendsms:
+      #    body: Hello Kaushik, fanzy scores and money sheet update ayyai chudu ra 
+      #    from: '+15752152911'
+      #    to: '+919492322223'
       - twilio/sendsms:
-          body: Hello Cowsick, fanzy scores and money sheet update ayyai chudu ra lavde
+          body: Mohith lavde, fanzy scores and money sheet update ayyai chudu badcow 
           from: '+15752152911'
-          to: '+919492322223'
+          to: '+919515345763'
       
 
 workflows:

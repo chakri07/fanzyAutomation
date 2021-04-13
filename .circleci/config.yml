@@ -5,25 +5,31 @@ orbs:
   twilio: circleci/twilio@1.0.0
   
 jobs:
-  build:
-    executor: python/default
+  #build:
+  #  executor: python/default
+  #  steps:
+  #    - checkout
+  #    - python/load-cache
+  #    - python/install-deps
+  #    - python/save-cache
+  #    - run: python3 ipl21.py 
+  fanzy_job_with_sms:
+    executor: python/default    
+    docker:
+      - image: 'cimg/base:edge'
     steps:
       - checkout
       - python/load-cache
       - python/install-deps
       - python/save-cache
       - run: python3 ipl21.py 
-  sms_job:
-    docker:
-      - image: 'cimg/base:edge'
-    steps:
       - twilio/install
       - twilio/sendsms:
-          body: Hi ra Chakri, from Alwala, message 2
+          body: Hi ra Chakri, from Alwala, message 3
           from: '+15752152911'
           to: '+919550593328'
       - twilio/sendsms:
-          body: Hi from Alwala
+          body: Hi from Alwala, message 3
           from: '+15752152911'
           to: '+919133416306'
 
@@ -38,5 +44,5 @@ workflows:
     #             - master
 
     jobs:
-      - build
-      #- sms_job
+      #- build
+      - fanzy_job_with_sms

@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup
+from datetime import datetime
 from scoreInterface import scoreInterface
 from sheet import gsheets
 import requests
 import json
-import time
+import pytz
+
 
 #0 = uid
 #1 = latest tourni score
@@ -15,6 +17,7 @@ uid_data = {"Mohith":["742873","0",3,100],"Chandan":["783789","0",5,200], "Chakr
 balancefor7 = [132,60,8,-50, -50, -50 , -50]
 balancefor6= [116,44,0,-50, -50, -50]
 dailyLeaderBoardCell = [16,4]
+IST = pytz.timezone('Asia/Kolkata')
 
 def updateScoreinSheet(scoreSheet,colToUpdate):
     for key in uid_data:
@@ -65,8 +68,8 @@ def main():
         moneyUpdate()
         leaderBoardUpdate()
     
-    now = time.asctime( time.localtime(time.time()) )
-    gsheets().getscoreSheet().update_acell('A13', "script ran last at " + now)
+    datetime_ist = datetime.now(IST)
+    gsheets().getscoreSheet().update_acell('A13', "script ran last at " + datetime_ist.strftime('%Y:%m:%d %H:%M:%S'))
     return
    
 if __name__ == "__main__":

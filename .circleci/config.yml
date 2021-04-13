@@ -15,11 +15,11 @@ jobs:
       - run: python3 ipl21.py 
       - twilio/install
       - twilio/sendsms:
-          body: Hi ra Chakri, from Alwala, both sheet update and sms working together. Now from another branch
+          body: Custom messages kuda unnai. Racha inka. All set and working. Master branch is stable
           from: '+15752152911'
           to: '+919550593328'
       - twilio/sendsms:
-          body: Hi from Alwala, message working test branch
+          body: Hello
           from: '+15752152911'
           to: '+919133416306'
 

@@ -15,12 +15,28 @@ jobs:
       - run: python3 ipl21.py 
       - twilio/install
       - twilio/sendsms:
-          body: Hi Alwala, fanzy sheet updated check 1
+          body: Hi ra Chakri, fanzy scores and money sheet update ayyai chudu ra 
+          from: '+15752152911'
+          to: '+919550593328'
+      - twilio/sendsms:
+          body: Hi Alwala, fanzy sheet updated
           from: '+15752152911'
           to: '+919133416306'
+      - twilio/sendsms:
+          body: Hello Kaushik, fanzy scores and money sheet update ayyai chudu ra 
+          from: '+15752152911'
+          to: '+919492322223'
+      - twilio/sendsms:
+          body: Hello Mohith, fanzy scores and money sheet update ayyai chudu ra
+          from: '+15752152911'
+          to: '+919515345763'
+      - twilio/sendsms:
+          body: Hello Sankeerth, fanzy scores and money sheet update ayyindi chudu
+          from: '+15752152911'
+          to: '+917095237775'
 
 workflows:
-  every_night:
+  nightly:
     triggers:
       - schedule:
           cron: "30 20 * * *"
